@@ -1,212 +1,222 @@
-/* frontend/src/App.css */
+/* frontend/src/App.css (v2.0 - Trendy Dark) */
 
-/* 전체적인 배경과 폰트 설정 */
+/* 1. Pretendard 폰트 적용 및 기본 배경 */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  /* (수정) Pretendard 폰트가 1순위! */
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f2f5; /* 아주 연한 회색 배경 */
-  color: #333; /* 기본 글자색 */
+
+  /* (수정) 배경을 연한 회색으로 */
+  background-color: #f4f4f5;
+  color: #1a1a1a;
+
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* 상단 정렬 */
-  min-height: 100vh; /* 최소 화면 높이 */
-  padding: 20px; /* 전체 여백 */
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 20px; /* 위아래 여백 넉넉하게 */
   box-sizing: border-box;
 }
 
+/* 2. 메인 앱 컨테이너 (다크 모드 카드) */
 .App {
-  text-align: center;
   width: 100%;
-  max-width: 900px; /* 최대 너비 제한 */
-  background-color: #ffffff; /* 컨텐츠 박스 배경 흰색 */
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
-  padding: 30px;
+  max-width: 800px; /* 너비 살짝 줄여서 집중도 UP */
+
+  /* (수정) 다크 모드 카드 디자인 */
+  background-color: #1c1c1e; /* 짙은 회색 */
+  color: #f2f2f2; /* 밝은 회색 텍스트 */
+  border-radius: 24px; /* 둥글게 */
+  border: 1px solid #333; /* 은은한 테두리 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* 그림자 */
+
+  padding: 40px;
   box-sizing: border-box;
+  text-align: center;
 }
 
+/* 3. 헤더 (제목) */
 .App-header {
   margin-bottom: 30px;
 }
 
 .App-header h1 {
-  font-size: 2.5em;
-  color: #1a1a1a;
+  font-size: 2.8em;
+  font-weight: 800; /* 더 두껍게 */
+  color: #ffffff; /* 순백색 제목 */
   margin-bottom: 10px;
-  font-weight: 700;
 }
 
 .App-header p {
   font-size: 1.1em;
-  color: #666;
-  margin-bottom: 25px;
+  color: rgba(255, 255, 255, 0.6); /* 텍스트는 연하게 */
+  margin: 0;
 }
 
-/* 로딩/에러 메시지 */
-.loading-message,
-.error-message {
-  font-size: 1.5em;
-  color: #555;
-  margin-top: 50px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+.last-updated {
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 10px;
 }
 
-.error-message {
-  color: #d9534f; /* 빨간색 에러 메시지 */
-  border-color: #d9534f;
-  background-color: #fcf2f2;
-}
-
-/* --- 지수 차트 영역 --- */
+/* 4. 지수 차트 영역 */
 .index-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-bottom: 40px;
 }
 
+/* (신규) 점수에 따른 다이나믹 컬러 텍스트 */
 .current-status {
-  font-size: 2.8em; /* CNN보다 약간 크게 */
-  font-weight: 800; /* 더 두껍게 */
-  margin-top: -30px; /* 차트와 겹치게 */
-  margin-bottom: 10px;
-  z-index: 10; /* 차트 위에 오도록 */
+  font-size: 3.2em;
+  font-weight: 800;
+  margin-top: -25px; /* 차트랑 겹치게 */
+  margin-bottom: 15px;
+  z-index: 10;
   position: relative;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.current-score {
-  font-size: 1.8em;
-  font-weight: 600;
-  color: #555;
-  margin-top: -10px;
-  margin-bottom: 20px;
-}
+/* (신규) 트렌디한 색상 팔레트 */
+.status-extreme-fear {
+  color: #ff6b6b;
+} /* 밝은 빨강 */
+.status-fear {
+  color: #ffb86c;
+} /* 주황 */
+.status-neutral {
+  color: #f8f8f2;
+} /* 중립 (밝은 회색) */
+.status-greed {
+  color: #50fa7b;
+} /* 밝은 초록 (네온 느낌) */
+.status-extreme-greed {
+  color: #8be9fd;
+} /* 밝은 하늘색 */
 
-/* --- 각 지표 상세 정보 섹션 --- */
+/* 5. 각 지표 상세 정보 카드 */
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(280px, 1fr)
-  ); /* 반응형 그리드 */
-  gap: 25px; /* 그리드 간격 */
-  margin-top: 40px;
-  text-align: left; /* 텍스트 왼쪽 정렬 */
+  grid-template-columns: 1fr; /* 3줄로 쌓기 (디자인 집중) */
+  gap: 20px;
+  text-align: left;
 }
 
 .metric-card {
-  background-color: #f9f9f9;
-  border: 1px solid #eee;
-  border-radius: 6px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* (수정) 카드도 다크 모드 */
+  background-color: #2c2c2e; /* 메인보다 살짝 밝은 다크 */
+  border: 1px solid #444; /* 은은한 테두리 */
+  border-radius: 16px; /* 둥글게 */
+  padding: 24px;
+  transition: all 0.2s ease-in-out;
 }
 
 .metric-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-color: #666;
 }
 
 .metric-card h3 {
-  font-size: 1.4em;
-  color: #2c3e50; /* 진한 파란색 계열 */
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #ffffff;
   margin-top: 0;
   margin-bottom: 15px;
-  border-bottom: 2px solid #e0e0e0;
+  border-bottom: 1px solid #444;
   padding-bottom: 10px;
 }
 
 .metric-card p {
   margin-bottom: 8px;
-  font-size: 0.95em;
-  color: #555;
-  line-height: 1.5;
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.7); /* 연한 텍스트 */
+  line-height: 1.6;
 }
 
 .metric-card p strong {
-  color: #333;
+  color: #f2f2f2;
   font-weight: 600;
+  margin-right: 5px;
 }
 
-/* 상세 점수 및 상태 색상 */
 .metric-score {
-  font-size: 1.1em;
-  font-weight: bold;
-  margin-top: 15px;
-  padding-top: 10px;
-  border-top: 1px dashed #e0e0e0;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px dashed #444;
 }
 .metric-score .status {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 800;
-  margin-left: 5px;
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 4px;
+  margin-left: 10px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  /* (수정) CSS 클래스에 맞게 배경/글자색 변경 */
 }
-
-/* 상태별 색상 */
 .status.extreme-fear {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: rgba(255, 107, 107, 0.1);
+  color: #ff6b6b;
 }
 .status.fear {
-  background-color: #fff3cd;
-  color: #856404;
+  background-color: rgba(255, 184, 108, 0.1);
+  color: #ffb86c;
 }
 .status.neutral {
-  background-color: #d1ecf1;
-  color: #0c5460;
+  background-color: rgba(248, 248, 242, 0.1);
+  color: #f8f8f2;
 }
 .status.greed {
-  background-color: #d4edda;
-  color: #155724;
+  background-color: rgba(80, 250, 123, 0.1);
+  color: #50fa7b;
 }
 .status.extreme-greed {
-  background-color: #cce5ff;
-  color: #004085;
+  background-color: rgba(139, 233, 253, 0.1);
+  color: #8be9fd;
 }
 
-/* 원본 데이터 표시 (디버깅용) */
-.raw-data {
+/* 6. 기타 (로딩, 에러, 원본데이터) */
+.loading-message,
+.error-message {
+  font-size: 1.5em;
+  color: #f2f2f2;
   margin-top: 50px;
   padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 5px;
-  border: 1px solid #e0e0e0;
+}
+.error-message {
+  color: #ff6b6b;
+}
+
+.raw-data {
+  margin-top: 40px;
+  padding: 15px;
+  background-color: #2c2c2e;
+  border-radius: 8px;
+  border: 1px solid #444;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
     monospace;
   font-size: 0.8em;
-  color: #444;
-  white-space: pre-wrap; /* 줄 바꿈 유지 */
+  color: rgba(255, 255, 255, 0.5);
+  white-space: pre-wrap;
   text-align: left;
 }
 
-/* 모바일 반응형 */
+/* 7. 모바일 반응형 */
 @media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
   .App {
-    padding: 15px;
+    padding: 20px;
+    border-radius: 16px;
   }
   .App-header h1 {
-    font-size: 2em;
-  }
-  .current-status {
     font-size: 2.2em;
   }
-  .current-score {
-    font-size: 1.5em;
-  }
-  .metrics-grid {
-    grid-template-columns: 1fr; /* 모바일에서는 한 줄에 하나씩 */
-    gap: 15px;
+  .current-status {
+    font-size: 2.5em;
   }
 }
