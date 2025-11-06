@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import Chart from "react-apexcharts";
-import "./App.css"; // 새로 만든 CSS 파일 임포트
+import "./App.css";
 
 function App() {
   const [indexData, setIndexData] = useState(null);
@@ -13,13 +13,11 @@ function App() {
       try {
         setLoading(true);
         setError(null);
-        // (수정!) Vercel에 등록한 환경 변수를 사용
         const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:5000";
         const response = await axios.get(`${API_URL}/api/index`);
         setIndexData(response.data);
       } catch (err) {
         console.error("API 호출 중 에러 발생:", err);
-        // 네트워크 에러 메시지를 좀 더 친절하게
         let errorMessage = "데이터를 불러오는 데 실패했습니다.";
         if (err.code === "ERR_NETWORK") {
           errorMessage += " 백엔드 서버가 실행 중인지 확인해주세요.";
