@@ -13,9 +13,9 @@ function App() {
       try {
         setLoading(true);
         setError(null);
-        // 중요: 배포 후에는 실제 백엔드 API URL로 변경해야 함!
-        // 예: 'https://your-backend-name.onrender.com/api/index'
-        const response = await axios.get("http://127.0.0.1:5000/api/index");
+        // (수정!) Vercel에 등록한 환경 변수를 사용
+        const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:5000";
+        const response = await axios.get(`${API_URL}/api/index`);
         setIndexData(response.data);
       } catch (err) {
         console.error("API 호출 중 에러 발생:", err);
