@@ -233,12 +233,6 @@ export default function Home() {
           </div>
         )}
       </section>
-
-      {indexData && (
-        <pre className="raw-data">
-          <code>{JSON.stringify(indexData, null, 2)}</code>
-        </pre>
-      )}
     </main>
   );
 }
