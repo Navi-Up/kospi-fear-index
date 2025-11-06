@@ -1,0 +1,7 @@
+앞으로 기억할 것:
+
+이 fear-index 프로젝트 작업을 다시 시작할 땐, 항상 source venv/bin/activate 명령어로 가상 환경을 먼저 켜주고 시작해야 해.
+
+작업이 끝나면 deactivate라고 치면 가상 환경이 꺼져.
+
+// http://127.0.0.1:5000/api/index
