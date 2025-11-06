@@ -43,7 +43,6 @@ export default function Home() {
 
     fetchData();
 
-    // 5분마다 자동 새로고침 (필요시 1분으로 변경)
     const interval = setInterval(fetchData, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
@@ -142,13 +141,13 @@ export default function Home() {
         <h2 className={`current-status ${finalStatus.class}`}>
           {indexData ? finalStatus.text : "데이터 로딩 중..."}
         </h2>
-        {/* (수정) Chart 컴포넌트를 div로 감싸서 Flexbox 정렬에 용이하게 */}
-        <div style={{ width: "450px", height: "auto" }}>
+        {/* (수정) 차트 컨테이너에 클래스 추가 */}
+        <div className="chart-container">
           <Chart
             options={chartOptions}
             series={[finalIndex]}
             type="radialBar"
-            width="100%" // 부모 div에 맞춰 100% 사용
+            width="100%"
           />
         </div>
       </section>
@@ -167,7 +166,6 @@ export default function Home() {
               </p>
               <p>KOSPI 지수와 120일 이동평균선의 비율입니다.</p>
               <div className="metric-score">
-                {/* (수정) 점수와 상태 텍스트를 분리 */}
                 <span className="score-value">
                   백분위 점수: {indexData.scores.momentum.toFixed(1)}점
                 </span>

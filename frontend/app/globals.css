@@ -7,22 +7,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: #1a1a1a;
-  color: #e0e0e0; /* 기본 글자색 밝게 */
+  /* (수정) 배경을 더 어둡고 차분한 그레이로 변경 */
+  background-color: #0d0d0d;
+  color: #e0e0e0; /* 기본 글자색 유지 */
 
   display: flex;
-  justify-content: center;
-  align-items: flex-start; /* 상단 정렬 유지 */
+  justify-content: center; /* (유지) 가로 중앙 정렬 */
+  align-items: flex-start; /* (유지) 상단 정렬 */
   min-height: 100vh;
-  padding: 40px 20px;
+  padding: 60px 20px; /* (수정) 전체 패딩 늘림 */
   box-sizing: border-box;
 }
 
 /* 2. 메인 앱 컨테이너 (배경과 자연스럽게 통합) */
 .App {
   width: 100%;
-  max-width: 960px; /* 너비 살짝 늘려서 전체 화면 느낌 */
+  max-width: 1024px; /* (수정) 최대 너비 살짝 늘려 시원하게 */
 
+  /* (수정) '블록' 느낌 제거: 배경 투명, 그림자, 테두리 모두 제거 */
   background-color: transparent;
   color: #f2f2f2;
   border-radius: 0;
@@ -31,52 +33,67 @@ body {
 
   padding: 0;
   box-sizing: border-box;
-  text-align: center;
 }
 
 /* 3. 헤더 (제목) */
 .App-header {
-  margin-bottom: 50px;
-  padding-bottom: 20px;
+  margin-bottom: 70px; /* (수정) 하단 여백 늘림 */
+  padding-bottom: 30px; /* (수정) 아래 패딩 늘림 */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 얇은 구분선 */
+  text-align: center; /* (유지) 헤더 중앙 정렬 */
 }
 
 .App-header h1 {
-  font-size: 3.2em;
+  font-size: 3.8em; /* (수정) 제목 크기 더 키움 */
   font-weight: 800;
   color: #ffffff;
-  margin-bottom: 12px;
+  margin-bottom: 15px; /* (수정) 아래 여백 늘림 */
+  letter-spacing: -1px; /* (신규) 글자 간격 조정 */
 }
 
 .App-header p {
-  font-size: 1.15em;
+  font-size: 1.25em; /* (수정) 설명 텍스트 크기 더 키움 */
   color: rgba(255, 255, 255, 0.6);
   margin: 0;
+  line-height: 1.5;
 }
 
 .last-updated {
-  font-size: 0.9em;
+  font-size: 1em; /* (수정) 크기 살짝 키움 */
   color: rgba(255, 255, 255, 0.4);
-  margin-top: 15px;
+  margin-top: 20px; /* (수정) 위 여백 늘림 */
 }
 
 /* 4. 지수 차트 영역 */
 .index-section {
-  margin-bottom: 60px;
-  padding-bottom: 30px;
+  margin-bottom: 80px; /* (수정) 하단 여백 대폭 늘림 */
+  padding-bottom: 40px; /* (수정) 차트 섹션 하단 패딩 늘림 */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* (핵심) 가로 중앙 정렬 */
+  justify-content: center;
+}
+
+/* (신규) 차트를 감싸는 div에 너비 100%와 중앙 정렬 추가 */
+.chart-container {
+  width: 450px; /* 차트의 고정 너비 유지 */
+  max-width: 100%; /* 모바일 대응 */
+  margin: 0 auto; /* (핵심) 가로 중앙 정렬 */
 }
 
 .current-status {
-  font-size: 3.6em;
+  font-size: 4.2em; /* (수정) 메인 상태 텍스트 더 크게! */
   font-weight: 800;
-  margin-top: -30px;
-  margin-bottom: 20px;
+  margin-top: -40px; /* (수정) 차트와 더 겹치게 */
+  margin-bottom: 25px; /* (수정) 아래 여백 늘림 */
   z-index: 10;
   position: relative;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 5px 25px rgba(0, 0, 0, 0.6); /* (수정) 그림자 더 강하게 */
 }
 
+/* (색상 팔레트는 유지) */
 .status-extreme-fear {
   color: #ff6b6b;
 }
@@ -96,134 +113,168 @@ body {
 /* 5. 각 지표 상세 정보 카드 (더 깔끔하게) */
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3열 그리드 (데스크톱) */
-  gap: 30px;
-  margin-top: 50px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px; /* (수정) 그리드 간격 더 늘림 */
+  margin-top: 60px; /* (수정) 위 여백 늘림 */
   text-align: left;
 }
 
 .metric-card {
-  background-color: #2a2a2e; /* 메인 배경보다 살짝 밝게 */
-  border: 1px solid #444;
-  border-radius: 12px;
-  padding: 28px;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /* (수정) 카드 배경색을 메인 배경과 유사하게. 투명도를 줘서 더 깊이감 있게 */
+  background-color: rgba(35, 35, 39, 0.6); /* 메인 배경보다 살짝 밝고 투명도 */
+  border: 1px solid rgba(70, 70, 75, 0.5); /* 테두리 더 연하게 */
+  border-radius: 16px; /* (수정) 둥글기 살짝 늘림 */
+  padding: 30px; /* (수정) 패딩 늘림 */
+  transition: all 0.3s ease-in-out; /* (수정) 트랜지션 시간 늘림 */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* (수정) 카드 그림자 더 강하게 */
+  backdrop-filter: blur(5px); /* (신규) 블러 효과로 고급진 느낌 */
 }
 
 .metric-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  border-color: #666;
+  transform: translateY(-8px); /* (수정) 더 크게 움직이게 */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); /* (수정) 그림자 더 강하게 */
+  border-color: rgba(100, 100, 105, 0.7); /* (수정) 테두리 색상 강조 */
 }
 
 .metric-card h3 {
-  font-size: 1.6em;
+  font-size: 1.7em; /* (수정) 지표 제목 더 키움 */
   font-weight: 700;
   color: #ffffff;
   margin-top: 0;
-  margin-bottom: 18px;
-  border-bottom: 1px solid #444;
-  padding-bottom: 12px;
+  margin-bottom: 20px; /* (수정) 아래 여백 늘림 */
+  /* (수정) 테두리 스타일 변경 */
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px; /* (수정) 아래 패딩 늘림 */
 }
 
 .metric-card p {
-  margin-bottom: 10px;
-  font-size: 1em;
-  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 12px; /* (수정) 아래 여백 늘림 */
+  font-size: 1.05em; /* (수정) 텍스트 크기 살짝 키움 */
+  color: rgba(255, 255, 255, 0.7); /* 텍스트 약간 밝게 */
   line-height: 1.6;
 }
 
 .metric-card p strong {
   color: #f2f2f2;
   font-weight: 600;
-  margin-right: 5px;
+  margin-right: 8px; /* (수정) 오른쪽 여백 늘림 */
 }
 
 .metric-score {
-  font-size: 1.25em;
+  font-size: 1.35em; /* (수정) 점수 텍스트 더 키움 */
   font-weight: 700;
-  margin-top: 25px;
-  padding-top: 18px;
-  border-top: 1px dashed #444;
+  margin-top: 30px; /* (수정) 위 여백 늘림 */
+  padding-top: 20px; /* (수정) 위 패딩 늘림 */
+  border-top: 1px dashed rgba(70, 70, 75, 0.5); /* 테두리 더 연하게 */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* (유지) 왼쪽 정렬 */
 }
-.metric-score .status {
-  font-size: 1.1em;
+.metric-score .score-value {
+  color: #f2f2f2;
+  margin-bottom: 12px; /* (수정) 상태 텍스트와의 간격 늘림 */
+}
+.metric-score .status-pill {
+  font-size: 1.1em; /* (유지) 캡슐 텍스트 크기 */
   font-weight: 800;
-  margin-left: 10px;
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 10px 18px; /* (수정) 패딩 더 늘림 */
+  border-radius: 25px; /* (수정) 더 둥근 캡슐 모양 */
+  text-align: center;
+  width: fit-content;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* (신규) 캡슐에도 그림자 */
 }
+/* (상태별 색상 유지) */
 .status.extreme-fear {
-  background-color: rgba(255, 107, 107, 0.15);
-  color: #ff6b6b;
-}
+  background-color: rgba(255, 107, 107, 0.18);
+  color: #ff8e8e;
+} /* (수정) 색상 살짝 조정 */
 .status.fear {
-  background-color: rgba(255, 184, 108, 0.15);
-  color: #ffb86c;
-}
+  background-color: rgba(255, 184, 108, 0.18);
+  color: #ffc98a;
+} /* (수정) 색상 살짝 조정 */
 .status.neutral {
   background-color: rgba(248, 248, 242, 0.15);
-  color: #f8f8f2;
-}
+  color: #e0e0e0;
+} /* (수정) 색상 살짝 조정 */
 .status.greed {
-  background-color: rgba(80, 250, 123, 0.15);
-  color: #50fa7b;
-}
+  background-color: rgba(80, 250, 123, 0.18);
+  color: #8affaa;
+} /* (수정) 색상 살짝 조정 */
 .status.extreme-greed {
-  background-color: rgba(139, 233, 253, 0.15);
-  color: #8be9fd;
-}
+  background-color: rgba(139, 233, 253, 0.18);
+  color: #9be9ff;
+} /* (수정) 색상 살짝 조정 */
 
 /* 6. 기타 (로딩, 에러, 원본데이터) */
 .loading-message,
 .error-message {
-  font-size: 1.5em;
+  font-size: 1.6em; /* (수정) 크기 키움 */
   color: #f2f2f2;
-  margin-top: 50px;
-  padding: 20px;
+  margin-top: 60px; /* (수정) 위 여백 늘림 */
+  padding: 25px; /* (수정) 패딩 늘림 */
+  text-align: center;
 }
 .error-message {
   color: #ff6b6b;
 }
 
 .raw-data {
-  margin-top: 50px;
-  padding: 20px;
-  background-color: #2a2a2e;
-  border-radius: 8px;
-  border: 1px solid #444;
+  margin-top: 60px; /* (수정) 위 여백 늘림 */
+  padding: 25px; /* (수정) 패딩 늘림 */
+  background-color: #1a1a1a; /* (수정) 배경색 더 어둡게 */
+  border-radius: 12px; /* (수정) 둥글기 늘림 */
+  border: 1px solid #2a2a2e; /* (수정) 테두리 연하게 */
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
     monospace;
-  font-size: 0.8em;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85em; /* (수정) 크기 살짝 키움 */
+  color: rgba(255, 255, 255, 0.4); /* (수정) 글자색 더 연하게 */
   white-space: pre-wrap;
   text-align: left;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* 7. 모바일 반응형 */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
+  /* (신규) 1024px 이하에서 그리드 2열 */
   .metrics-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 768px) {
   body {
-    padding: 20px 10px;
+    padding: 30px 15px; /* (수정) 모바일 패딩 조정 */
   }
   .App {
     padding: 0;
   }
   .App-header h1 {
-    font-size: 2.5em;
+    font-size: 2.8em; /* (수정) 모바일 제목 크기 조정 */
+  }
+  .App-header p {
+    font-size: 1.1em;
   }
   .current-status {
-    font-size: 2.8em;
+    font-size: 3.5em; /* (수정) 모바일 상태 텍스트 크기 조정 */
   }
   .metrics-grid {
     grid-template-columns: 1fr;
+    gap: 25px; /* (수정) 모바일 그리드 간격 조정 */
   }
   .metric-card {
-    padding: 20px;
+    padding: 25px; /* (수정) 모바일 카드 패딩 조정 */
+  }
+  .metric-card h3 {
+    font-size: 1.5em;
+  }
+  .metric-card p {
+    font-size: 0.95em;
+  }
+  .metric-score .score-value {
+    font-size: 1.15em;
+  }
+  .metric-score .status-pill {
+    font-size: 0.95em;
+    padding: 8px 15px;
   }
 }
